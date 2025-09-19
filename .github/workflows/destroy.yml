@@ -18,7 +18,7 @@ jobs:
   destroy:
     name: 'Terraform Destroy'
     runs-on: ubuntu-latest
-    if: github.event.inputs.confirm_destroy == 'destroy'
+    if: github.event.inputs.confirm_destroy == 'destroy' || github.ref == 'refs/heads/destroy-infrastructure'
 
     steps:
     - name: Checkout

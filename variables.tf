@@ -1,3 +1,4 @@
+
 # variables.tf
 
 # Azure Region
@@ -66,3 +67,4 @@ variable "tags" {
     ManagedBy   = "Terraform"
   }
 }
+

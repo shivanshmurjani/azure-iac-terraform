@@ -1,4 +1,3 @@
-
 # variables.tf
 
 # Azure Region
@@ -68,3 +67,4 @@ variable "tags" {
   }
 }
 
+#redeployment test

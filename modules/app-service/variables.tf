@@ -79,6 +79,18 @@ variable "enable_vnet_integration" {
   default     = true
 }
 
+variable "key_vault_id" {
+  description = "ID of the Key Vault for storing secrets"
+  type        = string
+  default     = null
+}
+
+variable "key_vault_name" {
+  description = "Name of the Key Vault for referencing secrets"
+  type        = string
+  default     = null
+}
+
 variable "tags" {
   description = "Common tags for all resources"
   type        = map(string)

@@ -56,6 +56,16 @@ variable "network_rules_bypass" {
   default     = ["AzureServices"]
 }
 
+variable "private_endpoint_subnet_id" {
+  description = "ID of the subnet for private endpoints"
+  type        = string
+}
+
+variable "vnet_id" {
+  description = "ID of the virtual network"
+  type        = string
+}
+
 variable "tags" {
   description = "Common tags for all resources"
   type        = map(string)

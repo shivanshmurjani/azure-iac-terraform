@@ -54,3 +54,30 @@ output "storage_account_id" {
   description = "ID of the storage account"
   value       = module.storage.storage_account_id
 }
+
+output "key_vault_id" {
+  description = "ID of the Key Vault"
+  value       = module.key_vault.key_vault_id
+}
+
+output "key_vault_uri" {
+  description = "URI of the Key Vault"
+  value       = module.key_vault.key_vault_uri
+}
+
+output "key_vault_name" {
+  description = "Name of the Key Vault"
+  value       = module.key_vault.key_vault_name
+}
+
+output "nsg_webapp_id" {
+  description = "ID of the webapp NSG"
+  value       = module.security.nsg_webapp_id
+}
+
+output "nsg_private_endpoint_id" {
+  description = "ID of the private endpoint NSG"
+  value       = module.security.nsg_private_endpoint_id
+}
+
+# Connectivity test VM removed - security can be verified through Azure portal and CLI

@@ -20,3 +20,13 @@ output "storage_account_primary_connection_string" {
   value       = azurerm_storage_account.main.primary_connection_string
   sensitive   = true
 }
+
+output "private_endpoint_id" {
+  description = "ID of the storage private endpoint"
+  value       = azurerm_private_endpoint.storage.id
+}
+
+output "private_dns_zone_id" {
+  description = "ID of the private DNS zone"
+  value       = azurerm_private_dns_zone.storage.id
+}

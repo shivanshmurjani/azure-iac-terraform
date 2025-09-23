@@ -29,3 +29,13 @@ output "webapp_default_hostname" {
   description = "Default hostname of the web app"
   value       = azurerm_linux_web_app.main.default_hostname
 }
+
+output "webapp_identity_principal_id" {
+  description = "Principal ID of the web app managed identity"
+  value       = azurerm_linux_web_app.main.identity[0].principal_id
+}
+
+output "webapp_identity_tenant_id" {
+  description = "Tenant ID of the web app managed identity"
+  value       = azurerm_linux_web_app.main.identity[0].tenant_id
+}

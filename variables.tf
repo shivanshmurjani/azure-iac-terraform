@@ -56,6 +56,13 @@ variable "storage_account_prefix" {
   default     = "stgsecureapp"
 }
 
+# Key Vault Name Prefix
+variable "key_vault_prefix" {
+  description = "Prefix for the Key Vault name"
+  type        = string
+  default     = "kv-secure-app"
+}
+
 # Tags
 variable "tags" {
   description = "Common tags for all resources"

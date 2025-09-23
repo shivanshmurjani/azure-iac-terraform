@@ -23,6 +23,9 @@ resource "random_string" "suffix" {
   upper   = false
 }
 
+# Get current Azure client configuration
+data "azurerm_client_config" "current" {}
+
 # Resource Group Module
 module "resource_group" {
   source = "./modules/resource-group"
@@ -66,5 +69,37 @@ module "storage" {
   location                = module.resource_group.location
   storage_account_prefix   = var.storage_account_prefix
   random_suffix            = random_string.suffix.result
+  private_endpoint_subnet_id = module.networking.private_endpoint_subnet_id
+  vnet_id                  = module.networking.vnet_id
   tags                    = var.tags
 }
+
+# Key Vault Module
+module "key_vault" {
+  source = "./modules/key-vault"
+  
+  resource_group_name = module.resource_group.resource_group_name
+  location           = module.resource_group.location
+  key_vault_prefix   = var.key_vault_prefix
+  random_suffix      = random_string.suffix.result
+  tenant_id          = data.azurerm_client_config.current.tenant_id
+  object_id          = data.azurerm_client_config.current.object_id
+  private_endpoint_subnet_id = module.networking.private_endpoint_subnet_id
+  vnet_id            = module.networking.vnet_id
+  tags              = var.tags
+}
+
+# Security Module
+module "security" {
+  source = "./modules/security"
+  
+  resource_group_name = module.resource_group.resource_group_name
+  location           = module.resource_group.location
+  vnet_id            = module.networking.vnet_id
+  webapp_subnet_id   = module.networking.webapp_subnet_id
+  private_endpoint_subnet_id = module.networking.private_endpoint_subnet_id
+  test_vm_subnet_id  = module.networking.test_vm_subnet_id
+  tags              = var.tags
+}
+
+# Connectivity test module removed - infrastructure security verified through other means

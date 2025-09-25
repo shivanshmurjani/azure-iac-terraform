@@ -29,7 +29,7 @@ Terraform requires a backend to store state. Follow these steps:
 
 ```powershell
 # Generate a random 6-character suffix
-$rand = -join ((65..90) + (97..122) | Get-Random -Count 2 | % {[char]$_})
+$rand = -join ((97..122) | Get-Random -Count 3 | ForEach-Object {[char]$_})
 
 # Define names using the random suffix
 $rgName        = "platform-rg-$rand"
